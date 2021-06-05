@@ -6,7 +6,7 @@ import pygame
 import initialize
 import time
 import globals
-
+import classBlock
 
 # initialize game engine
 pygame.init()
@@ -17,23 +17,19 @@ pygame.font.init()
 
 clock_tick_rate = 60
 
-# Open a window
-BACKGROUND_SCREEN = initialize.set_pygame_and_screen(
-    globals.SCREEN_HEIGHT, globals.SCREEN_WIDTH)
-
 # Set title to the window
 pygame.display.set_caption("CALENDARPY")
 
 clock = pygame.time.Clock()
 BACKGROUND_IMAGE = pygame.image.load("background_image.jpg")
 BACKGROUND_IMAGE = pygame.transform.smoothscale(
-    BACKGROUND_IMAGE, (globals.SCREEN_HEIGHT, globals.SCREEN_WIDTH))
+    BACKGROUND_IMAGE, (globals.SCREEN_WIDTH, globals.SCREEN_HEIGHT))
 
 running = True
 
-s = pygame.Surface(globals.CALENDAR_SURFACE_SIZE)
-s.set_alpha(128)                # alpha level
-s.fill((255, 255, 255))           # this fills the entire surface
+
+#clase1 = classBlock.ClassBlock("matematicas", 1, 2, )
+calendario = classBlock.Calendar()
 
 while running:
 
@@ -41,11 +37,9 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    BACKGROUND_SCREEN.blit(BACKGROUND_IMAGE, [0, 0])
-    BACKGROUND_SCREEN.blit(
-        s, ((globals.SCREEN_HEIGHT - globals.CALENDAR_SURFACE_SIZE[0])/2,
-            (globals.SCREEN_WIDTH - globals.CALENDAR_SURFACE_SIZE[1])/2))
-
+    globals.BACKGROUND_SCREEN.blit(BACKGROUND_IMAGE, [0, 0])
+    #clase1.render()
+    calendario.render()
     pygame.display.flip()
     clock.tick(clock_tick_rate)
 

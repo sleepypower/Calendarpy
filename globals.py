@@ -2,9 +2,13 @@
 This module contains all the global variables
 """
 import pygame
+import initialize
 
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 1200
-CALENDAR_SURFACE_SIZE = (int(SCREEN_HEIGHT * 0.9), int(SCREEN_WIDTH * 0.9))
+
+SCREEN_WIDTH = 1200
+SCREEN_HEIGHT = 800
+
+BACKGROUND_SCREEN = initialize.set_pygame_and_screen(
+    SCREEN_WIDTH, SCREEN_HEIGHT)
 
 #myfont = pygame.font.SysFont('Roboto', 30)
